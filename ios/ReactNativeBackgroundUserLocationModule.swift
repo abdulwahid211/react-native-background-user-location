@@ -1,7 +1,9 @@
 import ExpoModulesCore
+import CoreLocation
 
 public class ReactNativeBackgroundUserLocationModule: Module {
   // Each module class must implement the definition function. The definition consists of components
+    private var locationManager: LocationManager?
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
   public func definition() -> ModuleDefinition {
@@ -10,39 +12,47 @@ public class ReactNativeBackgroundUserLocationModule: Module {
     // The module will be accessible from `requireNativeModule('ReactNativeBackgroundUserLocation')` in JavaScript.
     Name("ReactNativeBackgroundUserLocation")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants([
-      "PI": Double.pi
-    ])
+    OnCreate {
+      // Initialize the location manager and set up the location update callback
+      self.locationManager = LocationManager()
+
+    self.locationManager?.onLocationUpdate = { [weak self] locationData in
+    print("Sending location from native:", locationData) // Verify this prints
+    self?.sendEvent("onLocationUpdate", locationData)
+     }
+        }
 
     // Defines event names that the module can send to JavaScript.
-    Events("onChange")
+    Events("onLocationUpdate")  // Must match sendEvent() name
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
     Function("hello") {
       return "Hello IOS World! 👋"
     }
 
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { (value: String) in
-      // Send an event to JavaScript.
-      self.sendEvent("onChange", [
-        "value": value
-      ])
+      AsyncFunction("startUpdatingLocationAsync") { (promise: Promise) in
+      // Start continuous location tracking
+      self.locationManager?.startUpdatingLocation()
+      promise.resolve(nil)
     }
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of the
-    // view definition: Prop, Events.
-    View(ReactNativeBackgroundUserLocationView.self) {
-      // Defines a setter for the `url` prop.
-      Prop("url") { (view: ReactNativeBackgroundUserLocationView, url: URL) in
-        if view.webView.url != url {
-          view.webView.load(URLRequest(url: url))
-        }
+    AsyncFunction("stopUpdatingLocationAsync") { (promise: Promise) in
+      // Stop continuous location tracking
+      self.locationManager?.stopUpdatingLocation()
+      promise.resolve(nil)
+    }
+
+    AsyncFunction("getCurrentPositionAsync") { (promise: Promise) in
+      // Return the current location once
+      guard let location = self.locationManager?.manager.location else {
+        promise.reject("NO_LOCATION", "No location available")
+        return
       }
 
-      Events("onLoad")
+      promise.resolve([
+        "latitude": location.coordinate.latitude,
+        "longitude": location.coordinate.longitude
+      ])
     }
   }
 }

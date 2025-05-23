@@ -21,7 +21,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactnativebackgrounduserlocationexample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactnativebackgrounduserlocationexample/Info.plist; sourceTree = "<group>"; };
 		19B91A7BB0D240ECF2E5DD3A /* libPods-reactnativebackgrounduserlocationexample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativebackgrounduserlocationexample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E5A25208B63F55E6A4F4950 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = reactnativebackgrounduserlocationexample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2E5A25208B63F55E6A4F4950 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = reactnativebackgrounduserlocationexample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		690123BC2960384B7C810C87 /* Pods-reactnativebackgrounduserlocationexample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativebackgrounduserlocationexample.release.xcconfig"; path = "Target Support Files/Pods-reactnativebackgrounduserlocationexample/Pods-reactnativebackgrounduserlocationexample.release.xcconfig"; sourceTree = "<group>"; };
 		9699D32BBDE3E37BFBFA806B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-reactnativebackgrounduserlocationexample/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		9889D6A9A6436C937D0CFC56 /* Pods-reactnativebackgrounduserlocationexample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativebackgrounduserlocationexample.debug.xcconfig"; path = "Target Support Files/Pods-reactnativebackgrounduserlocationexample/Pods-reactnativebackgrounduserlocationexample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -64,7 +64,6 @@
 				9889D6A9A6436C937D0CFC56 /* Pods-reactnativebackgrounduserlocationexample.debug.xcconfig */,
 				690123BC2960384B7C810C87 /* Pods-reactnativebackgrounduserlocationexample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -332,6 +331,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = reactnativebackgrounduserlocationexample/reactnativebackgrounduserlocationexample.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NPX9PT7V6M;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -368,6 +368,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = reactnativebackgrounduserlocationexample/reactnativebackgrounduserlocationexample.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NPX9PT7V6M;
 				INFOPLIST_FILE = reactnativebackgrounduserlocationexample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (

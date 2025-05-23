@@ -1,35 +1,29 @@
 # react-native-background-user-location
 
-To natively track a user’s location in the foreground and background in an Expo (React Native) app
+Native iOS module to track a user's location in both foreground and background in Expo (React Native) apps.
 
-# API documentation
+> ⚠️ **Currently iOS Only**  
+> Android support will be added in a future release.
 
-- [Documentation for the latest stable release](https://docs.expo.dev/versions/latest/sdk/react-native-background-user-location/)
-- [Documentation for the main branch](https://docs.expo.dev/versions/unversioned/sdk/react-native-background-user-location/)
+## Requirements
+- Expo SDK 53+
+- React Native 0.79+
+- iOS 15+
 
-# Installation in managed Expo projects
+## API Documentation
 
-For [managed](https://docs.expo.dev/archive/managed-vs-bare/) Expo projects, please follow the installation instructions in the [API documentation for the latest stable release](#api-documentation). If you follow the link and there is no documentation available then this library is not yet usable within managed projects &mdash; it is likely to be included in an upcoming Expo SDK release.
+- [Stable Release Documentation](https://docs.expo.dev/versions/latest/sdk/react-native-background-user-location/)
+- [Main Branch Documentation](https://docs.expo.dev/versions/unversioned/sdk/react-native-background-user-location/)
 
-# Installation in bare React Native projects
+## Installation
 
-For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
+### Managed Expo Projects
+Follow the installation instructions in the [API documentation](#api-documentation). Note that this module requires **Expo SDK 53 or higher**.
 
-### Add the package to your npm dependencies
+### Bare React Native Projects
 
-```
+1. Ensure you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/)
+
+2. Add the package:
+```bash
 npm install react-native-background-user-location
-```
-
-### Configure for Android
-
-
-
-
-### Configure for iOS
-
-Run `npx pod-install` after installing the npm package.
-
-# Contributing
-
-Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).

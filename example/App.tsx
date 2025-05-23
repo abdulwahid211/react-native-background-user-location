@@ -1,37 +1,78 @@
 import { useEvent } from 'expo';
-import ReactNativeBackgroundUserLocation, { ReactNativeBackgroundUserLocationView } from 'react-native-background-user-location';
+import ReactNativeBackgroundUserLocation, { LocationData } from 'react-native-background-user-location';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
 
 export default function App() {
-  const onChangePayload = useEvent(ReactNativeBackgroundUserLocation, 'onChange');
+  const [location, setLocation] = useState<LocationData | null>(null);
+
+  const fetchCurrentPosition = async () => {
+    try {
+      const pos = await ReactNativeBackgroundUserLocation.getCurrentPositionAsync();
+      console.log('Current position:', pos);
+      setLocation({ latitude: pos.latitude, longitude: pos.longitude });
+    } catch (err) {
+      console.warn('Error fetching location:', err);
+    }
+  };
+
+
+const liveTracking = async () => {
+  const subscription = ReactNativeBackgroundUserLocation.addListener(
+    'onLocationUpdate',
+    (payload: any) => {
+      setLocation(payload);
+      console.log('location:', payload);
+      return payload; // Return LocationData to match expected signature
+    }
+  );
+
+  return () => {
+    console.log('Cleaning up location tracking...');
+    subscription.remove();
+    ReactNativeBackgroundUserLocation.stopUpdatingLocationAsync();
+  };
+}
+
+// Usage in component
+useEffect(() => {
+  // const cleanupPromise = liveTracking();
+  // return () => {
+  //   cleanupPromise.then(cleanup => cleanup?.());
+  // };
+}, []);
+
+  const startTracking = async () => {
+    try {
+      await ReactNativeBackgroundUserLocation.startUpdatingLocationAsync();
+      await liveTracking();
+    } catch (err) {
+      console.warn('Error starting tracking:', err);
+    }
+  };
+
+  const stopTracking = async () => {
+    try {
+      await ReactNativeBackgroundUserLocation.stopUpdatingLocationAsync();
+      setLocation(null);
+    } catch (err) {
+      console.warn('Error stopping tracking:', err);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{ReactNativeBackgroundUserLocation.PI}</Text>
+        <Text style={styles.header}>Backgrouund User Location Test</Text>
+        <Group name="Controls">
+          <Button title="Start Tracking" onPress={startTracking} />
+          <Button title="Stop Tracking" onPress={stopTracking} />
+          <Button title="Get Current Position" onPress={fetchCurrentPosition} />
         </Group>
-        <Group name="Functions">
-          <Text>{ReactNativeBackgroundUserLocation.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await ReactNativeBackgroundUserLocation.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <ReactNativeBackgroundUserLocationView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
+
+        <Group name="Location Data">
+          <Text>Latitude: {location?.latitude ?? 'N/A'}</Text>
+          <Text>Longitude: {location?.longitude ?? 'N/A'}</Text>
         </Group>
       </ScrollView>
     </SafeAreaView>

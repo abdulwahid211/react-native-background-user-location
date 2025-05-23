@@ -1,19 +1,9 @@
-import type { StyleProp, ViewStyle } from 'react-native';
-
-export type OnLoadEventPayload = {
-  url: string;
-};
 
 export type ReactNativeBackgroundUserLocationModuleEvents = {
-  onChange: (params: ChangeEventPayload) => void;
+  onLocationUpdate: (params: LocationData) => LocationData;
 };
 
-export type ChangeEventPayload = {
-  value: string;
-};
-
-export type ReactNativeBackgroundUserLocationViewProps = {
-  url: string;
-  onLoad: (event: { nativeEvent: OnLoadEventPayload }) => void;
-  style?: StyleProp<ViewStyle>;
-};
+export interface LocationData {
+  latitude: number;
+  longitude: number;
+}

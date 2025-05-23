@@ -14,7 +14,13 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expo.modules.backgrounduserlocation.example"
+      "bundleIdentifier": "expo.modules.backgrounduserlocation.example",
+      "infoPlist": {
+        "UIBackgroundModes": ["location"],
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Allow $(PRODUCT_NAME) to use your location even when the app is not in use.",
+        "NSLocationWhenInUseUsageDescription": "Allow $(PRODUCT_NAME) to use your location while you are using the app.",
+        "NSLocationAlwaysUsageDescription": "Allow $(PRODUCT_NAME) to use your location in the background."
+      }
     },
     "android": {
       "adaptiveIcon": {
