@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.abdulwahid211.reactnativebackgrounduserlocation"
+  },
+  "ios": {
+    "bundleIdentifier": "com.abdulwahid211.reactnativebackgrounduserlocation"
+  }
+}

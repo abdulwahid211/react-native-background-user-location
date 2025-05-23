@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "react-native-background-user-location": ["../src/index"],
+      "react-native-background-user-location/*": ["../src/*"]
+    }
+  }
+}

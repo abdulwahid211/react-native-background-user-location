@@ -1,0 +1,49 @@
+{
+  "name": "react-native-background-user-location",
+  "version": "0.1.0",
+  "description": "To natively track a user’s location in the foreground and background in an Expo (React Native) app",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "open:ios": "xed example/ios",
+    "open:android": "open -a \"Android Studio\" example/android",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "react-native-background-user-location",
+    "ReactNativeBackgroundUserLocation"
+  ],
+  "repository": "https://github.com/abdulwahid211/react-native-background-user-location",
+  "bugs": {
+    "url": "https://github.com/abdulwahid211/react-native-background-user-location/issues"
+  },
+  "author": "Abdul Wahid <abdulwahid211@gmail.com> (abdulwahid211)",
+  "license": "MIT",
+  "homepage": "https://github.com/abdulwahid211/react-native-background-user-location#readme",
+  "dependencies": {
+    "expo": "~53.0.9",
+    "react": "19.0.0",
+    "react-native": "0.79.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.0.0",
+    "expo-module-scripts": "^4.1.6",
+    "expo": "~53.0.0",
+    "react-native": "0.79.1"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}
