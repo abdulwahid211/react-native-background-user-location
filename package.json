@@ -1,7 +1,7 @@
 {
   "name": "react-native-background-user-location",
-  "version": "0.1.0",
-  "description": "To natively track a user’s location in the foreground and background in an Expo (React Native) app",
+  "version": "1.0.0",
+  "description": "Native iOS module to track a user's location in both foreground and background in Expo (React Native) apps.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
